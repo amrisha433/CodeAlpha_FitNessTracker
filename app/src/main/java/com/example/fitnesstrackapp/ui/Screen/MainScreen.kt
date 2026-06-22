@@ -72,9 +72,13 @@ fun MainScreen(
                 viewModel = viewModel
             )
 
-            1 -> ProgressScreen()
+            1 -> ProgressScreen(
+                viewModel = viewModel
+            )
 
-            2 -> WorkoutHistoryScreen()
+            2 -> WorkoutHistoryScreen(
+                viewModel = viewModel
+            )
 
             3 -> ProfileScreen()
 

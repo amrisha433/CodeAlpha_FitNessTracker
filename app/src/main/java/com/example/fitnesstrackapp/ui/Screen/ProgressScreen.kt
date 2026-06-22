@@ -9,18 +9,35 @@ import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.example.fitnesstrackapp.ViewModel.FitnessViewModel
+import com.example.fitnesstrackapp.ui.components.WeeklyProgressCard
 
 @Composable
-fun ProgressScreen() {
+fun ProgressScreen(
+    viewModel: FitnessViewModel
+) {
+
+    val workouts by viewModel.workouts.collectAsState()
+
+    val totalWorkouts = workouts.size
+    val totalCalories = workouts.sumOf { it.calories }
+    val totalDuration = workouts.sumOf { it.duration }
+
+    val calorieGoal = 2000
+    val workoutGoal = 10
+    val durationGoal = 500
 
     Column(
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-            .padding(vertical = 46.dp,horizontal = 16.dp)
+            .padding(vertical = 56.dp, horizontal = 16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
 
         Text(
@@ -28,34 +45,35 @@ fun ProgressScreen() {
             style = MaterialTheme.typography.headlineMedium
         )
 
+
+        Spacer(modifier = Modifier.height(16.dp))
+        WeeklyProgressCard(
+            totalWorkouts = totalWorkouts,
+            totalCalories = totalCalories,
+            totalDuration = totalDuration
+        )
+
         Spacer(modifier = Modifier.height(16.dp))
 
         ProgressCard(
             title = "Calories Burned",
-            value = "500 / 2000 kcal",
-            progress = 0.25f,
-            Color(0xFFEF4444)
+            value = "$totalCalories / $calorieGoal kcal",
+            progress = (totalCalories.toFloat() / calorieGoal).coerceAtMost(1f),
+            color = Color(0xFFEF4444)
         )
 
         ProgressCard(
-            title = "Water Intake",
-            value = "4 / 8 Glasses",
-            progress = 0.5f,
-            Color(0xFF2563EB)
+            title = "Workout Minutes",
+            value = "$totalDuration / $durationGoal min",
+            progress = (totalDuration.toFloat() / durationGoal).coerceAtMost(1f),
+            color = Color(0xFF2563EB)
         )
 
         ProgressCard(
-            title = "Steps",
-            value = "6500 / 10000",
-            progress = 0.65f,
-            Color(0xFF16A34A)
-        )
-
-        ProgressCard(
-            title = "Workouts",
-            value = "2 / 3",
-            progress = 0.67f,
-            color = Color(0xFFF59E0B)
+            title = "Total Workouts",
+            value = "$totalWorkouts / $workoutGoal",
+            progress = (totalWorkouts.toFloat() / workoutGoal).coerceAtMost(1f),
+            color = Color(0xFF16A34A)
         )
     }
 }
@@ -76,15 +94,14 @@ fun ProgressCard(
         colors = CardDefaults.cardColors(
             containerColor = Color(0xFFEEF2FF)
         ),
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = 2.dp
-        ),
 
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 3.dp
+        )
     ) {
 
         Column(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(14.dp)
+            modifier = Modifier.padding(16.dp)
         ) {
 
             Text(
@@ -94,9 +111,9 @@ fun ProgressCard(
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            Text(value)
+            Text(text = value)
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(12.dp))
 
             LinearProgressIndicator(
                 progress = { progress },

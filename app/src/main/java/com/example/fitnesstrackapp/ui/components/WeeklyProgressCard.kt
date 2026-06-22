@@ -1,13 +1,8 @@
 package com.example.fitnesstrackapp.ui.components
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -16,7 +11,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun WeeklyProgressCard() {
+fun WeeklyProgressCard(
+    totalWorkouts: Int,
+    totalCalories: Int,
+    totalDuration: Int
+) {
 
     Card(
         modifier = Modifier
@@ -25,6 +24,10 @@ fun WeeklyProgressCard() {
 
         colors = CardDefaults.cardColors(
             containerColor = Color(0xFFFFFBEB)
+        ),
+
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 4.dp
         )
     ) {
 
@@ -33,43 +36,31 @@ fun WeeklyProgressCard() {
         ) {
 
             Text(
-                text = "📅 Weekly Progress",
-                style = MaterialTheme.typography.titleMedium,
+                text = "📅 Weekly Summary",
+                style = MaterialTheme.typography.titleLarge,
                 color = Color(0xFFB45309)
             )
 
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
-            ProgressItem("Mon", 0.3f)
-            ProgressItem("Tue", 0.5f)
-            ProgressItem("Wed", 0.2f)
-            ProgressItem("Thu", 0.7f)
-            ProgressItem("Fri", 0.9f)
-            ProgressItem("Sat", 0.6f)
-            ProgressItem("Sun", 0.8f)
+            Text(
+                text = "🏋️ Total Workouts: $totalWorkouts",
+                style = MaterialTheme.typography.bodyLarge
+            )
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Text(
+                text = "🔥 Calories Burned: $totalCalories kcal",
+                style = MaterialTheme.typography.bodyLarge
+            )
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Text(
+                text = "⏱ Workout Duration: $totalDuration min",
+                style = MaterialTheme.typography.bodyLarge
+            )
         }
     }
-}
-
-@Composable
-fun ProgressItem(
-    day: String,
-    progress: Float
-) {
-
-    Text(
-        text = day,
-        style = MaterialTheme.typography.bodyMedium
-    )
-
-    Spacer(modifier = Modifier.height(4.dp))
-
-    LinearProgressIndicator(
-        progress = { progress },
-        modifier = Modifier.fillMaxWidth(),
-        color = Color(0xFFF59E0B),
-        trackColor = Color.Gray.copy(alpha = 0.2f)
-    )
-
-    Spacer(modifier = Modifier.height(10.dp))
 }

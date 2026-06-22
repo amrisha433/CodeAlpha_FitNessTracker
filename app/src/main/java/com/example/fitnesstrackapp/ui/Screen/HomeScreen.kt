@@ -128,8 +128,6 @@ fun HomeScreen(viewModel: FitnessViewModel) {
                 totalWorkouts = totalWorkouts
             )
 
-            WeeklyProgressCard()
-
             Spacer(modifier = Modifier.height(16.dp))
 
             Text(

@@ -29,7 +29,8 @@ class FitnessViewModel(
                 Workout(
                     name = name,
                     duration = duration,
-                    calories = calories
+                    calories = calories,
+                    date = System.currentTimeMillis().toString()
                 )
             )
         }
