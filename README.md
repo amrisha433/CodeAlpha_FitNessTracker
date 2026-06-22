@@ -17,7 +17,11 @@
 
 Fitness Tracker is a modern Android application built with Kotlin and Jetpack Compose that helps users monitor workouts, track fitness progress, manage hydration goals, and maintain healthy habits through an intuitive dashboard experience.
 
-The application follows MVVM Architecture and uses Room Database for local data persistence, providing a responsive and scalable Android development solution.
+The application allows users to record workouts, monitor calories burned, track exercise duration, manage daily water intake, track step goals, and achieve personalized fitness targets through dedicated Daily Goals and Progress dashboards. Users can easily visualize their fitness journey, monitor performance, and stay motivated to maintain healthy habits.
+
+Built using MVVM Architecture and Room Database, the app ensures efficient local data storage, clean code structure, and a responsive user experience. The project also incorporates Material 3 design principles, workout analytics, category-based insights, and Dark Mode support to deliver a modern Android experience.
+
+This project demonstrates key Android development concepts including Jetpack Compose UI development, state management, Room Database integration, navigation, reusable UI components, and modern Android architecture best practices.
 
 ---
 
@@ -49,6 +53,14 @@ The application follows MVVM Architecture and uses Room Database for local data 
 * Daily step counting
 * Step goal monitoring
 * Progress indicators
+
+### 🎯 Daily Goals Tracker
+
+* Monitor daily calorie goals
+* Track daily water intake goals
+* Track workout completion goals
+* Visual progress indicators
+* Goal achievement monitoring
 
 ### 📅 Workout History
 
