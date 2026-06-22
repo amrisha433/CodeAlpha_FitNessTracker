@@ -92,7 +92,11 @@ The application follows MVVM Architecture and uses Room Database for local data 
 
 ### 🏠 Home Screen
 
-<img src="screenshots/home.png" width="250">
+<img width="228" height="470" alt="Screenshot 2026-06-23 at 1 09 26 AM" src="https://github.com/user-attachments/assets/e96932ab-221b-472b-b1c8-6956e5ef5780" />
+
+<img width="224" height="475" alt="Screenshot 2026-06-23 at 1 09 36 AM" src="https://github.com/user-attachments/assets/a096a4e4-2658-4662-ab71-0b9a04761409" />
+
+<img width="224" height="474" alt="Screenshot 2026-06-23 at 1 09 57 AM" src="https://github.com/user-attachments/assets/d2e06fb5-8f61-4f9d-a74c-25e484a6d545" />
 
 ### 📊 Progress Dashboard
 
