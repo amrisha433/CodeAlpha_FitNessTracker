@@ -87,45 +87,61 @@ The application follows MVVM Architecture and uses Room Database for local data 
 | IDE              | Android Studio     |
 
 ---
-
 ## 📸 Screenshots
 
 ### 🏠 Home Screen
 
-<img width="228" height="470" alt="Screenshot 2026-06-23 at 1 09 26 AM" src="https://github.com/user-attachments/assets/e96932ab-221b-472b-b1c8-6956e5ef5780" />
-
-<img width="224" height="475" alt="Screenshot 2026-06-23 at 1 09 36 AM" src="https://github.com/user-attachments/assets/a096a4e4-2658-4662-ab71-0b9a04761409" />
-
-<img width="224" height="474" alt="Screenshot 2026-06-23 at 1 09 57 AM" src="https://github.com/user-attachments/assets/d2e06fb5-8f61-4f9d-a74c-25e484a6d545" />
-
-### 📊 Progress Dashboard
-
-<img width="215" height="463" alt="Screenshot 2026-06-23 at 1 11 42 AM" src="https://github.com/user-attachments/assets/ba87db96-c960-43bd-b8a1-bc56d0d3a5d0" />
-
-<img width="217" height="465" alt="Screenshot 2026-06-23 at 1 11 57 AM" src="https://github.com/user-attachments/assets/cb5b2b1f-fc21-4ed2-85eb-cfffe71bccd9" />
-
-
-### 📅 Workout History
-
-<img width="213" height="463" alt="Screenshot 2026-06-23 at 1 12 09 AM" src="https://github.com/user-attachments/assets/58dfc864-7be2-4c6a-b21a-fb8c20dc409f" />
-
-### 👤 Profile Screen
-
-<img width="215" height="462" alt="Screenshot 2026-06-23 at 1 12 17 AM" src="https://github.com/user-attachments/assets/e0cfc242-c266-45a7-90ab-d668fd18e657" />
-
-
-###  🌙 Dark Mode Support
-
-<img width="221" height="467" alt="Screenshot 2026-06-23 at 1 17 51 AM" src="https://github.com/user-attachments/assets/3669e55b-9b1d-42a1-b564-3bbbf6ceb240" />
-
-<img width="209" height="466" alt="Screenshot 2026-06-23 at 1 17 59 AM" src="https://github.com/user-attachments/assets/8446cd39-370d-4596-bda4-42371a6830b5" />
-
-<img width="210" height="460" alt="Screenshot 2026-06-23 at 1 18 06 AM" src="https://github.com/user-attachments/assets/728432c0-6869-4e6c-9499-18d0f58f39c5" />
-
-<img width="219" height="465" alt="Screenshot 2026-06-23 at 1 18 14 AM" src="https://github.com/user-attachments/assets/576791d7-e378-4dee-970f-5a6774778f50" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/e96932ab-221b-472b-b1c8-6956e5ef5780" width="220"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://github.com/user-attachments/assets/a096a4e4-2658-4662-ab71-0b9a04761409" width="220"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://github.com/user-attachments/assets/d2e06fb5-8f61-4f9d-a74c-25e484a6d545" width="220"/>
+</p>
 
 ---
 
+### 📊 Progress Dashboard
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/ba87db96-c960-43bd-b8a1-bc56d0d3a5d0" width="220"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://github.com/user-attachments/assets/cb5b2b1f-fc21-4ed2-85eb-cfffe71bccd9" width="220"/>
+</p>
+
+---
+
+### 📅 Workout History
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/58dfc864-7be2-4c6a-b21a-fb8c20dc409f" width="220"/>
+</p>
+
+---
+
+### 👤 Profile Screen
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/e0cfc242-c266-45a7-90ab-d668fd18e657" width="220"/>
+</p>
+
+---
+
+### 🌙 Dark Mode Support
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/3669e55b-9b1d-42a1-b564-3bbbf6ceb240" width="220"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://github.com/user-attachments/assets/8446cd39-370d-4596-bda4-42371a6830b5" width="220"/>
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/728432c0-6869-4e6c-9499-18d0f58f39c5" width="220"/>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://github.com/user-attachments/assets/576791d7-e378-4dee-970f-5a6774778f50" width="220"/>
+</p>
+
+---
 ## 📂 Project Structure
 
 ```text
