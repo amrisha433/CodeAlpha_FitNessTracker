@@ -23,9 +23,8 @@ data class NavItem(
 fun MainScreen(
     viewModel: FitnessViewModel
 ) {
-
     var selectedTab by remember {
-        mutableIntStateOf(0)
+        mutableStateOf(0)
     }
 
     val items = listOf(
@@ -34,6 +33,9 @@ fun MainScreen(
         NavItem("History", Icons.Default.DateRange),
         NavItem("Profile", Icons.Default.Person)
     )
+
+
+    val tabs = listOf("Workouts", "Stats")
 
     Scaffold(
 
@@ -80,7 +82,9 @@ fun MainScreen(
                 viewModel = viewModel
             )
 
-            3 -> ProfileScreen()
+            3 -> ProfileScreen(
+                viewModel = viewModel
+            )
 
 
         }

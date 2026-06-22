@@ -21,7 +21,7 @@ fun DailyGoalsCard(
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
-            containerColor = Color(0xFFEEF2FF)
+            containerColor = MaterialTheme.colorScheme.surfaceVariant
         ),
         elevation = CardDefaults.cardElevation(
             defaultElevation = 4.dp
@@ -35,7 +35,7 @@ fun DailyGoalsCard(
             Text(
                 text = "🎯 Daily Goals",
                 style = MaterialTheme.typography.titleMedium,
-                color = Color(0xFF1E293B)
+                color = MaterialTheme.colorScheme.onSurface
             )
 
             Spacer(modifier = Modifier.height(12.dp))

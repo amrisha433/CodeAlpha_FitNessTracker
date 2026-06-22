@@ -8,13 +8,24 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.example.fitnesstrackapp.ViewModel.FitnessViewModel
 
 @Composable
-fun ProfileScreen() {
+fun ProfileScreen(
+    viewModel: FitnessViewModel
+) {
+
+    val workouts by viewModel.workouts.collectAsState()
+
+    val totalWorkouts = workouts.size
+    val totalCalories = workouts.sumOf { it.calories }
+    val totalDuration = workouts.sumOf { it.duration }
 
     Column(
         modifier = Modifier
@@ -35,12 +46,12 @@ fun ProfileScreen() {
         Spacer(modifier = Modifier.height(12.dp))
 
         Text(
-            text = "Amrisha Maurya",
+            text = "Fitness Dashboard",
             style = MaterialTheme.typography.headlineSmall
         )
 
         Text(
-            text = "Fitness Enthusiast",
+            text = "Track • Improve • Achieve",
             color = Color.Gray
         )
 
@@ -53,17 +64,17 @@ fun ProfileScreen() {
 
         ProfileInfoCard(
             title = "🏋️ Total Workouts",
-            value = "25"
+            value = totalWorkouts.toString()
         )
 
         ProfileInfoCard(
             title = "🔥 Total Calories Burned",
-            value = "12,500 kcal"
+            value = "$totalCalories kcal"
         )
 
         ProfileInfoCard(
-            title = "👣 Total Steps",
-            value = "75,000"
+            title = "⏱ Total Workout Time",
+            value = "$totalDuration min"
         )
 
         ProfileInfoCard(
@@ -92,8 +103,9 @@ fun ProfileInfoCard(
             .padding(vertical = 6.dp),
 
         colors = CardDefaults.cardColors(
-            containerColor = Color(0xFFEEF2FF)
+            containerColor = MaterialTheme.colorScheme.surfaceVariant
         ),
+
         elevation = CardDefaults.cardElevation(
             defaultElevation = 2.dp
         )

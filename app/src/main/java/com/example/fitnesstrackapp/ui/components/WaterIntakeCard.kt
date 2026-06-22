@@ -30,7 +30,7 @@ fun WaterIntakeCard(
             .fillMaxWidth()
             .padding(vertical = 8.dp),
         colors = CardDefaults.cardColors(
-            containerColor = Color(0xFFE0F2FE)
+            containerColor = MaterialTheme.colorScheme.surfaceVariant
         ),
         elevation = CardDefaults.cardElevation(
             defaultElevation = 4.dp
@@ -44,7 +44,7 @@ fun WaterIntakeCard(
             Text(
                 text = "💧 Water Intake",
                 style = MaterialTheme.typography.titleMedium,
-                color = Color(0xFF0369A1)
+                color = MaterialTheme.colorScheme.primary
             )
 
             Spacer(modifier = Modifier.height(12.dp))
@@ -75,7 +75,7 @@ fun WaterIntakeCard(
             Button(
                 onClick = onAddGlass,
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFF3B82F6)
+                    containerColor = MaterialTheme.colorScheme.primary
                 )
             ) {
                 Text("➕ Add Glass")

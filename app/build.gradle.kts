@@ -15,7 +15,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.fitnesstrackapp"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -79,5 +79,8 @@ dependencies {
 
     //for viewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.1")
+
+    //for Charts
+    implementation("co.yml:ycharts:2.1.0")
 
 }

@@ -23,6 +23,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.fitnesstrackapp.ViewModel.FitnessViewModel
+import com.example.fitnesstrackapp.ui.AddWorkoutDialog
 import com.example.fitnesstrackapp.ui.components.DailyGoalsCard
 import com.example.fitnesstrackapp.ui.components.StepTrackerCard
 import com.example.fitnesstrackapp.ui.components.SummaryCard
@@ -65,7 +66,6 @@ fun HomeScreen(viewModel: FitnessViewModel) {
             Text(
                 text = "Welcome Back 👋",
                 style = MaterialTheme.typography.headlineLarge,
-                color = Color(0xFF0F172A)
             )
 
             Spacer(modifier = Modifier.height(4.dp))
@@ -180,10 +180,11 @@ fun HomeScreen(viewModel: FitnessViewModel) {
             onDismiss = {
                 showDialog = false
             },
-            onSave = { name, duration, calories ->
+            onSave = { name, category, duration, calories ->
 
                 viewModel.addWorkout(
                     name = name,
+                    category = category,
                     duration = duration,
                     calories = calories
                 )

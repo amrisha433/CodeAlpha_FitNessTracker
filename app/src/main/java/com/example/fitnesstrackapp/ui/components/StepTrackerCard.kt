@@ -34,7 +34,7 @@ fun StepTrackerCard(
             .padding(vertical = 8.dp),
 
         colors = CardDefaults.cardColors(
-            containerColor = Color(0xFFF0FDF4)
+            containerColor = MaterialTheme.colorScheme.surfaceVariant
         ),
         elevation = CardDefaults.cardElevation(
             defaultElevation = 4.dp
@@ -49,7 +49,7 @@ fun StepTrackerCard(
             Text(
                 text = "👣 Step Tracker",
                 style = MaterialTheme.typography.titleMedium,
-                color = Color(0xFF15803D)
+                color = MaterialTheme.colorScheme.primary
             )
 
             Spacer(modifier = Modifier.height(12.dp))
@@ -78,7 +78,7 @@ fun StepTrackerCard(
             Button(
                 onClick = onAddSteps,
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFF22C55E)
+                    containerColor = MaterialTheme.colorScheme.primary
                 )
             ) {
                 Text("➕ Add 500 Steps")

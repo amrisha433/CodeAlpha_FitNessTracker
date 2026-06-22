@@ -28,3 +28,9 @@ val CaloriesRed = Color(0xFFEF4444)
 val StepsGreen = Color(0xFF16A34A)
 
 val ProgressOrange = Color(0xFFF59E0B)
+
+val PrimaryGreen = Color(0xFF00C853)
+val DarkBackground = Color(0xFF121212)
+val CardColor = Color(0xFF1E1E1E)
+val TextWhite = Color(0xFFFFFFFF)
+val AccentBlue = Color(0xFF00B0FF)

@@ -10,5 +10,6 @@ data class Workout(
     val name: String,
     val duration: Int,
     val calories: Int,
-    val date: String
+    val date: Long,
+    val category: String
 )

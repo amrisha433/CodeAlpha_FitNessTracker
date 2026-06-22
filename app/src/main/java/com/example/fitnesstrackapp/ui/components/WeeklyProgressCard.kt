@@ -23,7 +23,7 @@ fun WeeklyProgressCard(
             .padding(vertical = 8.dp),
 
         colors = CardDefaults.cardColors(
-            containerColor = Color(0xFFFFFBEB)
+            MaterialTheme.colorScheme.secondaryContainer
         ),
 
         elevation = CardDefaults.cardElevation(

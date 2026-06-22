@@ -1,8 +1,8 @@
 package com.example.fitnesstrackapp.ui.Screen
 
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.LinearProgressIndicator
@@ -16,6 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.fitnesstrackapp.ViewModel.FitnessViewModel
 import com.example.fitnesstrackapp.ui.components.WeeklyProgressCard
+import com.example.fitnesstrackapp.ui.components.WorkoutCategoryChart
 
 @Composable
 fun ProgressScreen(
@@ -27,54 +28,81 @@ fun ProgressScreen(
     val totalWorkouts = workouts.size
     val totalCalories = workouts.sumOf { it.calories }
     val totalDuration = workouts.sumOf { it.duration }
+    val categoryData = workouts
+        .groupBy { it.category }
+        .mapValues { it.value.size }
 
     val calorieGoal = 2000
     val workoutGoal = 10
     val durationGoal = 500
 
-    Column(
+    LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-            .padding(vertical = 56.dp, horizontal = 16.dp),
+            .padding(horizontal = 16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
 
-        Text(
-            text = "📊 Progress Dashboard",
-            style = MaterialTheme.typography.headlineMedium
-        )
+        item {
 
+            Spacer(modifier = Modifier.height(56.dp))
 
-        Spacer(modifier = Modifier.height(16.dp))
-        WeeklyProgressCard(
-            totalWorkouts = totalWorkouts,
-            totalCalories = totalCalories,
-            totalDuration = totalDuration
-        )
+            Text(
+                text = "📊 Progress Dashboard",
+                style = MaterialTheme.typography.headlineMedium
+            )
+        }
 
-        Spacer(modifier = Modifier.height(16.dp))
+        item {
 
-        ProgressCard(
-            title = "Calories Burned",
-            value = "$totalCalories / $calorieGoal kcal",
-            progress = (totalCalories.toFloat() / calorieGoal).coerceAtMost(1f),
-            color = Color(0xFFEF4444)
-        )
+            WeeklyProgressCard(
+                totalWorkouts = totalWorkouts,
+                totalCalories = totalCalories,
+                totalDuration = totalDuration
+            )
+        }
 
-        ProgressCard(
-            title = "Workout Minutes",
-            value = "$totalDuration / $durationGoal min",
-            progress = (totalDuration.toFloat() / durationGoal).coerceAtMost(1f),
-            color = Color(0xFF2563EB)
-        )
+        item {
 
-        ProgressCard(
-            title = "Total Workouts",
-            value = "$totalWorkouts / $workoutGoal",
-            progress = (totalWorkouts.toFloat() / workoutGoal).coerceAtMost(1f),
-            color = Color(0xFF16A34A)
-        )
+            ProgressCard(
+                title = "Calories Burned",
+                value = "$totalCalories / $calorieGoal kcal",
+                progress = (totalCalories.toFloat() / calorieGoal).coerceAtMost(1f),
+                color = Color(0xFFEF4444)
+            )
+        }
+
+        item {
+
+            ProgressCard(
+                title = "Workout Minutes",
+                value = "$totalDuration / $durationGoal min",
+                progress = (totalDuration.toFloat() / durationGoal).coerceAtMost(1f),
+                color = Color(0xFF2563EB)
+            )
+        }
+
+        item {
+
+            ProgressCard(
+                title = "Total Workouts",
+                value = "$totalWorkouts / $workoutGoal",
+                progress = (totalWorkouts.toFloat() / workoutGoal).coerceAtMost(1f),
+                color = Color(0xFF16A34A)
+            )
+        }
+
+        item {
+
+            WorkoutCategoryChart(
+                categoryData = categoryData
+            )
+        }
+
+        item {
+
+            Spacer(modifier = Modifier.height(100.dp))
+        }
     }
 }
 
@@ -92,7 +120,7 @@ fun ProgressCard(
             .padding(bottom = 12.dp),
 
         colors = CardDefaults.cardColors(
-            containerColor = Color(0xFFEEF2FF)
+            containerColor = MaterialTheme.colorScheme.surfaceVariant
         ),
 
         elevation = CardDefaults.cardElevation(
@@ -106,12 +134,15 @@ fun ProgressCard(
 
             Text(
                 text = title,
-                style = MaterialTheme.typography.titleMedium
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.onSurface
             )
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            Text(text = value)
+            Text(text = value,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
 
             Spacer(modifier = Modifier.height(12.dp))
 

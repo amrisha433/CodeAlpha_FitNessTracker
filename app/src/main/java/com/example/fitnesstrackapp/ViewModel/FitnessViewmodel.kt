@@ -12,6 +12,15 @@ class FitnessViewModel(
     private val repository: FitnessRepository
 ) : ViewModel() {
 
+    val totalWorkouts
+        get() = workouts.value.size
+
+    val totalCalories
+        get() = workouts.value.sumOf { it.calories }
+
+    val totalDuration
+        get() = workouts.value.sumOf { it.duration }
+
     val workouts = repository.workouts
         .stateIn(
             scope = viewModelScope,
@@ -22,15 +31,17 @@ class FitnessViewModel(
     fun addWorkout(
         name: String,
         duration: Int,
-        calories: Int
+        calories: Int,
+        category: String
     ) {
         viewModelScope.launch {
             repository.insertWorkout(
                 Workout(
                     name = name,
                     duration = duration,
+                    category = category,
                     calories = calories,
-                    date = System.currentTimeMillis().toString()
+                    date = System.currentTimeMillis()
                 )
             )
         }

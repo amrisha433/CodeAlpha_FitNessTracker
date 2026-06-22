@@ -42,8 +42,7 @@ fun WorkoutHistoryScreen(
 
         Text(
             text = "🏋️ Workout History",
-            style = MaterialTheme.typography.headlineMedium,
-            color = Color.Black
+            style = MaterialTheme.typography.headlineMedium
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -80,7 +79,7 @@ fun WorkoutHistoryScreen(
                     Card(
                         modifier = Modifier.fillMaxWidth(),
                         colors = CardDefaults.cardColors(
-                            containerColor = Color(0xFFEEF2FF)
+                            containerColor = MaterialTheme.colorScheme.surfaceVariant
                         ),
                         elevation = CardDefaults.cardElevation(
                             defaultElevation = 3.dp
@@ -93,21 +92,25 @@ fun WorkoutHistoryScreen(
 
                             Text(
                                 text = workout.name,
-                                style = MaterialTheme.typography.titleLarge
+                                style = MaterialTheme.typography.titleLarge,
+                                color = MaterialTheme.colorScheme.onSurface
                             )
 
                             Spacer(modifier = Modifier.height(8.dp))
 
                             Text(
-                                text = "⏱ Duration: ${workout.duration} min"
+                                text = "⏱ Duration: ${workout.duration} min",
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
 
                             Text(
-                                text = "🔥 Calories: ${workout.calories} kcal"
+                                text = "🔥 Calories: ${workout.calories} kcal",
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
 
                             Text(
-                                text = "📅 $formattedDate"
+                                text = "📅 $formattedDate",
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
                         }
                     }
