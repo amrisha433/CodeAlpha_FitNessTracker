@@ -10,19 +10,22 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.fitnesstrackapp.ViewModel.FitnessViewModel
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(viewModel: FitnessViewModel) {
 
     var showDialog by remember {
         mutableStateOf(false)
     }
+    val workouts by viewModel.workouts.collectAsState()
 
     Column(
         modifier = Modifier
@@ -45,6 +48,16 @@ fun HomeScreen() {
         ) {
             Text("Add Workout")
         }
+        Spacer(modifier = Modifier.height(16.dp))
+
+        workouts.forEach { workout ->
+
+            Text(
+                text = "${workout.name} • ${workout.duration} min • ${workout.calories} kcal"
+            )
+
+            Spacer(modifier = Modifier.height(8.dp))
+        }
     }
 
     if (showDialog) {
@@ -53,9 +66,17 @@ fun HomeScreen() {
             onDismiss = {
                 showDialog = false
             },
-            onSave = { _, _, _ ->
+            onSave = { name, duration, calories ->
+
+                viewModel.addWorkout(
+                    name = name,
+                    duration = duration,
+                    calories = calories
+                )
+
                 showDialog = false
             }
         )
     }
+
 }

@@ -1,5 +1,6 @@
 package com.example.fitnesstrackapp.ui.Screen
 
+import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -15,8 +16,6 @@ fun AddWorkoutDialog(
     var name by remember { mutableStateOf("") }
     var duration by remember { mutableStateOf("") }
     var calories by remember { mutableStateOf("") }
-    val durationInt = duration.toIntOrNull()
-    val caloriesInt = calories.toIntOrNull()
 
     AlertDialog(
         onDismissRequest = onDismiss,
@@ -63,6 +62,8 @@ fun AddWorkoutDialog(
 
             Button(
                 onClick = {
+                    val durationInt = duration.toIntOrNull()
+                    val caloriesInt = calories.toIntOrNull()
 
                     if (
                         name.isNotBlank() &&
@@ -75,6 +76,7 @@ fun AddWorkoutDialog(
                             durationInt != null &&
                             caloriesInt != null
                         ) {
+                            Log.d("Workout", "$name $duration $calories")
                             onSave(
                                 name,
                                 durationInt,
