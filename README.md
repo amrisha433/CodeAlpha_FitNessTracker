@@ -10,7 +10,7 @@
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github)
 
 <p align="center">
-  <img width="1536" height="1024" alt="banner image" src="https://github.com/user-attachments/assets/2074c64a-1956-457e-a1aa-b8ea8b596d12" />
+  <img width="1536" height="1024" alt="BannerImage_fitnessTracker" src="https://github.com/user-attachments/assets/375efd2e-43ce-4a89-97d5-ebc8b24eee60" />
 </p>
 
 ## 📱 Overview
@@ -100,15 +100,29 @@ The application follows MVVM Architecture and uses Room Database for local data 
 
 ### 📊 Progress Dashboard
 
-<img src="screenshots/progress.png" width="250">
+<img width="215" height="463" alt="Screenshot 2026-06-23 at 1 11 42 AM" src="https://github.com/user-attachments/assets/ba87db96-c960-43bd-b8a1-bc56d0d3a5d0" />
+
+<img width="217" height="465" alt="Screenshot 2026-06-23 at 1 11 57 AM" src="https://github.com/user-attachments/assets/cb5b2b1f-fc21-4ed2-85eb-cfffe71bccd9" />
+
 
 ### 📅 Workout History
 
-<img src="screenshots/history.png" width="250">
+<img width="213" height="463" alt="Screenshot 2026-06-23 at 1 12 09 AM" src="https://github.com/user-attachments/assets/58dfc864-7be2-4c6a-b21a-fb8c20dc409f" />
 
 ### 👤 Profile Screen
 
-<img src="screenshots/profile.png" width="250">
+<img width="215" height="462" alt="Screenshot 2026-06-23 at 1 12 17 AM" src="https://github.com/user-attachments/assets/e0cfc242-c266-45a7-90ab-d668fd18e657" />
+
+
+###  🌙 Dark Mode Support
+
+<img width="221" height="467" alt="Screenshot 2026-06-23 at 1 17 51 AM" src="https://github.com/user-attachments/assets/3669e55b-9b1d-42a1-b564-3bbbf6ceb240" />
+
+<img width="209" height="466" alt="Screenshot 2026-06-23 at 1 17 59 AM" src="https://github.com/user-attachments/assets/8446cd39-370d-4596-bda4-42371a6830b5" />
+
+<img width="210" height="460" alt="Screenshot 2026-06-23 at 1 18 06 AM" src="https://github.com/user-attachments/assets/728432c0-6869-4e6c-9499-18d0f58f39c5" />
+
+<img width="219" height="465" alt="Screenshot 2026-06-23 at 1 18 14 AM" src="https://github.com/user-attachments/assets/576791d7-e378-4dee-970f-5a6774778f50" />
 
 ---
 
