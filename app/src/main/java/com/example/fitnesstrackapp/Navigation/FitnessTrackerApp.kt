@@ -9,6 +9,7 @@ import com.example.fitnesstrackapp.Repository.FitnessRepository
 import com.example.fitnesstrackapp.ViewModel.FitnessViewModel
 import com.example.fitnesstrackapp.ViewModel.FitnessViewModelFactory
 import com.example.fitnesstrackapp.ui.Screen.HomeScreen
+import com.example.fitnesstrackapp.ui.Screen.MainScreen
 
 @Composable
 fun FitnessTrackerApp() {
@@ -31,7 +32,7 @@ fun FitnessTrackerApp() {
         factory = factory
     )
 
-    HomeScreen(
+    MainScreen(
         viewModel = viewModel
     )
 }
