@@ -1,17 +1,14 @@
 package com.example.fitnesstrackapp.ui.Screen
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material.icons.filled.EmojiEvents
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.ShowChart
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.example.fitnesstrackapp.ui.Screen.HomeScreen
-import com.example.fitnesstrackapp.ui.Screen.ProfileScreen
-import com.example.fitnesstrackapp.ui.Screen.ProgressScreen
 import com.example.fitnesstrackapp.ViewModel.FitnessViewModel
 
 data class NavItem(
@@ -23,70 +20,41 @@ data class NavItem(
 fun MainScreen(
     viewModel: FitnessViewModel
 ) {
-    var selectedTab by remember {
-        mutableStateOf(0)
-    }
+    var selectedTab by remember { mutableIntStateOf(0) }
 
     val items = listOf(
-        NavItem("Home", Icons.Default.Home),
-        NavItem("Progress", Icons.Default.ShowChart),
-        NavItem("History", Icons.Default.DateRange),
-        NavItem("Profile", Icons.Default.Person)
+        NavItem("Home",       Icons.Default.Home),
+        NavItem("Progress",   Icons.Default.ShowChart),
+        NavItem("History",    Icons.Default.DateRange),
+        NavItem("Trophies",   Icons.Default.EmojiEvents),
+        NavItem("Profile",    Icons.Default.Person)
     )
 
-
-    val tabs = listOf("Workouts", "Stats")
-
     Scaffold(
-
         bottomBar = {
-
             NavigationBar {
-
                 items.forEachIndexed { index, item ->
-
                     NavigationBarItem(
                         selected = selectedTab == index,
-
-                        onClick = {
-                            selectedTab = index
-                        },
-
+                        onClick  = { selectedTab = index },
                         icon = {
                             Icon(
                                 imageVector = item.icon,
                                 contentDescription = item.title
                             )
                         },
-
-                        label = {
-                            Text(item.title)
-                        }
+                        label = { Text(item.title) }
                     )
                 }
             }
         }
-    ) { paddingValues ->
-
+    ) { _ ->
         when (selectedTab) {
-
-            0 -> HomeScreen(
-                viewModel = viewModel
-            )
-
-            1 -> ProgressScreen(
-                viewModel = viewModel
-            )
-
-            2 -> WorkoutHistoryScreen(
-                viewModel = viewModel
-            )
-
-            3 -> ProfileScreen(
-                viewModel = viewModel
-            )
-
-
+            0 -> HomeScreen(viewModel = viewModel)
+            1 -> ProgressScreen(viewModel = viewModel)
+            2 -> WorkoutHistoryScreen(viewModel = viewModel)
+            3 -> AchievementsScreen(viewModel = viewModel)
+            4 -> ProfileScreen(viewModel = viewModel)
         }
     }
 }

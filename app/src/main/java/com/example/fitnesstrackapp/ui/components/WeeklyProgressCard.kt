@@ -1,66 +1,64 @@
 package com.example.fitnesstrackapp.ui.components
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
+/**
+ * Displays workout statistics for a bounded time period (week or month).
+ *
+ * All values are passed in from the ViewModel and are correctly date-scoped –
+ * this card no longer shows all-time totals labelled as "weekly".
+ */
 @Composable
 fun WeeklyProgressCard(
+    label: String = "📅 This Week",
     totalWorkouts: Int,
     totalCalories: Int,
-    totalDuration: Int
+    totalDurationMin: Int,
+    avgDailySteps: Int = -1   // -1 = not available
 ) {
-
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 8.dp),
-
         colors = CardDefaults.cardColors(
-            MaterialTheme.colorScheme.secondaryContainer
+            containerColor = MaterialTheme.colorScheme.secondaryContainer
         ),
-
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = 4.dp
-        )
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ) {
-
-        Column(
-            modifier = Modifier.padding(16.dp)
-        ) {
+        Column(modifier = Modifier.padding(16.dp)) {
 
             Text(
-                text = "📅 Weekly Summary",
+                text = label,
                 style = MaterialTheme.typography.titleLarge,
                 color = Color(0xFFB45309)
             )
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            Text(
-                text = "🏋️ Total Workouts: $totalWorkouts",
-                style = MaterialTheme.typography.bodyLarge
-            )
+            StatRow("🏋️ Workouts", "$totalWorkouts")
+            StatRow("🔥 Recorded Calories", "$totalCalories kcal")
+            StatRow("⏱ Total Duration", "$totalDurationMin min")
 
-            Spacer(modifier = Modifier.height(8.dp))
-
-            Text(
-                text = "🔥 Calories Burned: $totalCalories kcal",
-                style = MaterialTheme.typography.bodyLarge
-            )
-
-            Spacer(modifier = Modifier.height(8.dp))
-
-            Text(
-                text = "⏱ Workout Duration: $totalDuration min",
-                style = MaterialTheme.typography.bodyLarge
-            )
+            if (avgDailySteps >= 0) {
+                StatRow("👣 Avg Daily Steps", "$avgDailySteps steps")
+            }
         }
+    }
+}
+
+@Composable
+private fun StatRow(label: String, value: String) {
+    Row(
+        modifier = Modifier.fillMaxWidth().padding(vertical = 3.dp),
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Text(label, style = MaterialTheme.typography.bodyLarge)
+        Text(value, style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.primary)
     }
 }

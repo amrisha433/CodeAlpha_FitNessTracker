@@ -1,17 +1,7 @@
 package com.example.fitnesstrackapp.ui.components
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.LinearProgressIndicator
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -19,11 +9,13 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun WaterIntakeCard(
-    waterIntake: Int,
-    onAddGlass: () -> Unit
+    totalMl: Int,
+    goalMl: Int,
+    onAddMl: (Int) -> Unit,
+    onUndo: () -> Unit
 ) {
-
-    val progress = (waterIntake / 8f).coerceIn(0f, 1f)
+    val progress = if (goalMl > 0) (totalMl.toFloat() / goalMl).coerceIn(0f, 1f) else 0f
+    val percentInt = (progress * 100).toInt()
 
     Card(
         modifier = Modifier
@@ -32,14 +24,9 @@ fun WaterIntakeCard(
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceVariant
         ),
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = 4.dp
-        )
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ) {
-
-        Column(
-            modifier = Modifier.padding(16.dp)
-        ) {
+        Column(modifier = Modifier.padding(16.dp)) {
 
             Text(
                 text = "💧 Water Intake",
@@ -47,14 +34,14 @@ fun WaterIntakeCard(
                 color = MaterialTheme.colorScheme.primary
             )
 
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(8.dp))
 
             Text(
-                text = "$waterIntake / 8 Glasses",
+                text = "${totalMl}ml / ${goalMl}ml",
                 style = MaterialTheme.typography.bodyLarge
             )
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(6.dp))
 
             LinearProgressIndicator(
                 progress = { progress },
@@ -63,22 +50,34 @@ fun WaterIntakeCard(
                 trackColor = Color.Gray.copy(alpha = 0.3f)
             )
 
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(6.dp))
 
             Text(
-                text = "${(progress * 100).toInt()}% Hydrated",
+                text = "$percentInt% Hydrated",
                 color = Color(0xFF0369A1)
             )
 
             Spacer(modifier = Modifier.height(12.dp))
 
-            Button(
-                onClick = onAddGlass,
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.primary
-                )
+            // Quick-add row
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                listOf(150, 250, 500).forEach { ml ->
+                    FilledTonalButton(
+                        onClick = { onAddMl(ml) },
+                        modifier = Modifier.weight(1f)
+                    ) {
+                        Text("+${ml}ml", style = MaterialTheme.typography.labelMedium)
+                    }
+                }
+            }
+
+            Spacer(modifier = Modifier.height(6.dp))
+
+            TextButton(
+                onClick = onUndo,
+                modifier = Modifier.fillMaxWidth()
             ) {
-                Text("➕ Add Glass")
+                Text("↩ Undo last entry")
             }
         }
     }

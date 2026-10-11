@@ -83,4 +83,16 @@ dependencies {
     //for Charts
     implementation("co.yml:ycharts:2.1.0")
 
+    //for DataStore (goal preferences, step baseline, reminder settings)
+    implementation("androidx.datastore:datastore-preferences:1.1.7")
+
+    //for WorkManager (hydration reminders)
+    implementation("androidx.work:work-runtime-ktx:2.10.2")
+
+    //Room KTX (coroutine Flow helpers)
+    implementation("androidx.room:room-ktx:2.8.4")
+
+    //Unit testing
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.11.0")
+    testImplementation("androidx.room:room-testing:2.8.4")
 }
