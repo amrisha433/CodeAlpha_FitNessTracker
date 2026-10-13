@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.ui.graphics.Color
+import androidx.core.graphics.alpha
 import com.example.fitnesstrackapp.ui.theme.CardBackground
 import com.example.fitnesstrackapp.ui.theme.Green
 import com.example.fitnesstrackapp.ui.theme.Navy
@@ -52,13 +53,13 @@ fun WorkoutCard(
 
                 Text(
                     text = workout.name,
-                    color = Navy,
+                    color = Color(0xFF4F8CFF),
                     style = MaterialTheme.typography.titleMedium
                 )
 
                 Text(
                     text = "⏱ ${workout.duration} min",
-                    color = Color.DarkGray
+                    color = Color.Gray
                 )
 
                 Text(

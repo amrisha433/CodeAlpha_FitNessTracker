@@ -1,58 +1,58 @@
 package com.example.fitnesstrackapp.ui.theme
 
-import android.app.Activity
-import android.os.Build
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
-import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.graphics.Color
 
-private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
-)
+/**
+ * Premium dark fitness colour scheme.
+ *
+ * Dynamic colour is intentionally disabled so the hand-crafted palette is
+ * always applied consistently, regardless of the device's Android version or
+ * wallpaper colour.
+ */
+private val FitnessDarkColorScheme = darkColorScheme(
+    // Core
+    primary                = PrimaryBlue,
+    onPrimary              = OnPrimary,
+    primaryContainer       = SecondaryContainer,
+    onPrimaryContainer     = OnSecondaryContainer,
 
-private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
+    secondary              = AccentTeal,
+    onSecondary            = OnPrimary,
+    secondaryContainer     = SecondaryContainer,
+    onSecondaryContainer   = OnSecondaryContainer,
 
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+    tertiary               = SuccessGreen,
+    onTertiary             = OnPrimary,
+
+    // Backgrounds / surfaces
+    background             = DarkBackground,
+    onBackground           = TextPrimary,
+    surface                = DarkSurface,
+    onSurface              = TextPrimary,
+    surfaceVariant         = DarkSurfaceVar,
+    onSurfaceVariant       = TextSecondary,
+
+    // Error
+    error                  = ErrorRed,
+    onError                = OnPrimary,
+    errorContainer         = Color(0xFF3B0A0A),
+    onErrorContainer       = Color(0xFFFFCDD2),
+
+    // Outlines
+    outline                = BorderSubtle,
+    outlineVariant         = Color(0xFF1E2235),
 )
 
 @Composable
 fun FitnessTrackAppTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
-
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
-    }
-
     MaterialTheme(
-        colorScheme = colorScheme,
-        typography = Typography,
-        content = content
+        colorScheme = FitnessDarkColorScheme,
+        typography  = Typography,
+        content     = content
     )
 }

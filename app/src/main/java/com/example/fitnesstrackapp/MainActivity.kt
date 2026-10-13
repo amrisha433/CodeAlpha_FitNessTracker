@@ -29,7 +29,6 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
 /**
  * Requests runtime permissions then initialises the step counter once granted.
  * Handles permission denial gracefully – the app continues to work without step data.
